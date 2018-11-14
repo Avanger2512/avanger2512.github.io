@@ -1,0 +1,478 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Index page</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" media="all" href="css/app.css" />
+  </head>
+  <body>
+    <!-- BEGIN header -->
+    <header class="header">
+      <a href="/" class="logo header__logo">
+        <img class="logo__pic" src="./img/logo.svg" alt="">
+      </a>
+      <div class="header__right">
+        <a href="#" class="header__link" target="_blank"> Ru </a>
+        <a href="#" class="header__link" target="_blank"> My Account </a>
+      </div>
+      <div class="container">
+        <div class="l">
+          <div class="l__col ">
+            <a href="#" class="header__link " target="_blank"> Products </a>
+            <a href="#" class="header__link  header__link_mod " target="_blank"> To work together. </a>
+          </div>
+          <div class="l__col  l__col_gap-md ">
+            <a href="#" class="header__link " target="_blank" download="filename"> Downloads </a>
+            <a href="#" class="header__link " target="_blank"> Buy </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- END header -->
+    <!-- BEGIN content -->
+    <section class="section section_md bg-gray">
+      <div class="container ">
+        <div class="section__inner">
+          <h1 class="section__caption">​​Icons8&nbsp;allows the&nbsp;professional and&nbsp;amateur designers express&nbsp;their&nbsp;ideas by&nbsp;providing&nbsp;the&nbsp;right design&nbsp;elements at&nbsp;the&nbsp;right&nbsp;time.</h1>
+          <button type="button" class="play section__play">
+            <span class="play__icon"></span>
+            <span class="play__content">
+              <span class="play__text">About Icons8</span>
+              <span class="play__desc">1:26</span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="section__vertical section__text-right">
+        <a href="#" class="sectiton__link color-gray">Questions?</a>
+      </div>
+      <div class="section__left">
+        <div class="lines">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </section>
+    <section id="vue-section" :class="['section',  setBgClass]">
+      <div class="tabs">
+        <div class="tabs__caption text-center">
+          <button type="button" name="button" v-for="(tab, index) in tabs" :key="index" :class="['h3 tabs__button', { 'is-active': currentTab === tab }]" @click="currentTab = tab">
+            <!-- I have problems with my nunjuks template(this is also  syntax)( and the tab name is not displayed. I solved it in css.  -->
+            <!--  -->
+          </button>
+        </div>
+        <div class="tabs__content">
+          <div class="tab-1" v-if="activeTab">
+            <div class="tabs__title h3 color-white">Everybody is full <br> of creativity until he gets bored <br> and distracted.</div>
+            <div class="container">
+              <div class="l">
+                <div class="l__col">
+                  <ul class="list list_light">
+                    <li class="list__title">Mundane <br> design operations<br> ore:</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="l">
+                <!-- BEGIN col -->
+                <div class="l__col">
+                  <ul class="list list_light">
+                    <li class="list__item">Drawing rectangles</li>
+                    <li class="list__item">Selecting layers</li>
+                  </ul>
+                </div>
+                <!-- END col -->
+                <!-- BEGIN col -->
+                <div class="l__col">
+                  <ul class="list list_light">
+                    <li class="list__item">Aligning the objects</li>
+                    <li class="list__item">Rounding</li>
+                    <li class="list__item">Creating symbols</li>
+                    <li class="list__item">Destroying</li>
+                  </ul>
+                </div>
+                <!-- END col -->
+                <!-- BEGIN col -->
+                <div class="l__col l__col_gap">
+                  <div class="desc desc_white desc_top">And few dozen other boring, low-level tasks that kill creativit</div>
+                </div>
+                <!-- END col -->
+              </div>
+            </div>
+          </div>
+          <div class="tab-2" v-else>
+            <div class="tabs__title h3 color-white">To deliver the content <br> before designers even think <br> about it.</div>
+            <div class="container">
+              <div class="l">
+                <!-- BEGIN col -->
+                <div class="l__col">
+                  <ul class="list list_light">
+                    <li class="list__title">We create</li>
+                    <li class="list__item">Design elements</li>
+                    <li class="list__item">Tools</li>
+                  </ul>
+                </div>
+                <!-- END col -->
+                <!-- BEGIN col -->
+                <div class="l__col">
+                  <ul class="list list_light">
+                    <li class="list__title">we share</li>
+                    <li class="list__item">Icons in any size and style</li>
+                    <li class="list__item">Stock photos</li>
+                    <li class="list__item">Music for your videos</li>
+                    <li class="list__item">Illustrations</li>
+                    <li class="list__item">More</li>
+                  </ul>
+                </div>
+                <!-- END col -->
+                <!-- BEGIN col -->
+                <div class="l__col l__col_gap">
+                  <div class="desc desc_white">We aim for the creative world.</div>
+                </div>
+                <!-- END col -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- TABS -->
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+      new Vue(
+      {
+        el: '#vue-section',
+        data:
+        {
+          currentTab: 'problem',
+          tabs: ['problem', 'solution']
+        },
+        computed:
+        {
+          setBgClass()
+          {
+            return this.currentTab === this.tabs[0] ? 'bg-red' : 'bg-green'
+          },
+          activeTab()
+          {
+            return this.currentTab === this.tabs[0] ? true : false
+          },
+        }
+      });
+
+    </script>
+    <section class="section section_sm">
+      <div class="container">
+        <div class="l">
+          <div class="l__col color-gray"> Meanwhile we use </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <h4 class="section__width"> Predictive&nbsp;analytics better&nbsp;UX Machine&nbsp;learning </h4>
+      </div>
+    </section>
+    <section class="section section_md bg-gray ">
+      <div class="text-center">
+        <h3 class=" section__title">team of 40</h3>
+        <div class="h5 section__desc">Unlike designer marketplaces that resell the files, we actually produce our content. <br> We tag it. And we create the custom tools <br> to keep it at hand.</div>
+        <!-- BEGIN team -->
+        <ul class="teams">
+          <li class="teams__item">
+            <img src="./img/teams/team-1.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-2.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-3.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-4.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-5.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-6.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-7.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-8.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-9.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-10.jpg" alt="">
+          </li>
+          <li class="teams__item">
+            <img src="./img/teams/team-11.jpg" alt="">
+          </li>
+        </ul>
+        <!-- END team -->
+      </div>
+      <div class="container">
+        <div class="l">
+          <div class="l__col">
+            <ul class="list list_title list_dark">
+              <li class="list__title">we are</li>
+              <li class="list__item">Icon designers</li>
+              <li class="list__item">Illustrators</li>
+              <li class="list__item">UX designers</li>
+              <li class="list__item">Motion designer</li>
+              <li class="list__item">3D artists</li>
+              <li class="list__item">Photographer &amp; makeup artist</li>
+              <li class="list__item">Retouch artists</li>
+              <li class="list__item">Musicians</li>
+            </ul>
+          </div>
+          <div class="l__col">
+            <ul class="list list_title list_dark">
+              <li class="list__title"></li>
+              <li class="list__item">Front-end developers</li>
+              <li class="list__item">.Net developers</li>
+              <li class="list__item">QA</li>
+              <li class="list__item">DevOps</li>
+              <li class="list__item">Computer vision expert</li>
+              <li class="list__item">Writers</li>
+              <li class="list__item">Support engineers</li>
+            </ul>
+          </div>
+          <div class="l__col l__col_gap">
+            <div class="desc"> We are a fully remote tribe. <br> Cheers. </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section_row">
+      <div class="section__item bg-light-blue">
+        <a href="#" class="h2">api</a>
+        <div class="section__vertical section__meta section__meta_bottom">
+          <a href="#" class=" ">Use, Share and Create</a>
+        </div>
+      </div>
+      <div class="section__item bg-green">
+        <a href="#" class="h2">products</a>
+        <a href="#" class="section__meta section__meta_top">Become our hero</a>
+      </div>
+    </section>
+    <!-- END content -->
+    <!-- BEGIN foooter -->
+    <footer class="footer">
+      <div class="container">
+        <!-- BEGIN row -->
+        <div class="footer__row l">
+          <div class="l__col">
+            <ul class="list">
+              <li class="list__title">icons8</li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Business Model</a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Team</a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Blog</a>
+              </li>
+            </ul>
+          </div>
+          <div class="l__col">
+            <ul class="list">
+              <li class="list__title">support</li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Forum</a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">FAQ</a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Contact us</a>
+              </li>
+            </ul>
+          </div>
+          <div class="l__col">
+            <ul class="list">
+              <li class="list__title">ideas</li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Lunacy Features</a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Photos</a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Icons</a>
+              </li>
+            </ul>
+          </div>
+          <div class="l__col l__col_center">
+            <div class="application">
+              <a href="#" target="_blank" class="application__item" target="_blank">
+                <img src="./img/appstore.jpg" alt="">
+              </a>
+              <a href="#" target="_blank" class="application__item" target="_blank">
+                <img src="./img/googleplay.jpg" alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- END row -->
+        <hr>
+        </hr>
+        <!-- BEGIN row -->
+        <div class="footer__row l">
+          <div class="l__col">
+            <ul class="list list_md">
+              <li class="list__title">products</li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Icons8 App <span class="label">new</span>
+                </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Moose </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Lunacy </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Sketch the Ripper </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Music </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Sounds </a>
+              </li>
+            </ul>
+          </div>
+          <div class="l__col">
+            <ul class="list list_md">
+              <li class="list__title">API</li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Icons </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Free Photos </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Music </a>
+              </li>
+            </ul>
+          </div>
+          <div class="l__col">
+            <ul class="list list_md">
+              <li class="list__title">labs</li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Omg-Img </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> iMessage Stickers </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Line Awesome </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Cosmic Pedro </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Scribble AI </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Pharm </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> We Love SVG </a>
+              </li>
+            </ul>
+          </div>
+          <div class="l__col">
+            <ul class="list list_md">
+              <li class="list__title">downloads</li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Icons8 for Mac and Windows </a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link"> Free photos </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- END row -->
+        <!-- BEGIN row -->
+        <div class="footer__row footer__row_mod l l_center">
+          <div class="l__col">
+            <div class="copyright">© 2018 Icons8 LLC.</div>
+          </div>
+          <div class="l__col">
+            <ul class="list list_row">
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Privacy Policy</a>
+              </li>
+              <li class="list__item">
+                <a href="#" target="_blank" class="list__link">Terms and Conditions</a>
+              </li>
+            </ul>
+          </div>
+          <div class="l__col l__col_gap">
+            <div class="socials-wrap">
+              <div class="socials-wrap__title">Follow us</div>
+              <ul class="socials">
+                <li class="socials__item">
+                  <a href="#" target="_blank" class="socials__link">
+                    <svg class="icon icon-fb">
+                      <use xlink:href="img/sprite.svg#icon-fb"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="socials__item">
+                  <a href="#" target="_blank" class="socials__link">
+                    <svg class="icon icon-instagram">
+                      <use xlink:href="img/sprite.svg#icon-instagram"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="socials__item">
+                  <a href="#" target="_blank" class="socials__link">
+                    <svg class="icon icon-twitter">
+                      <use xlink:href="img/sprite.svg#icon-twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="socials__item">
+                  <a href="#" target="_blank" class="socials__link">
+                    <svg class="icon icon-dribbble">
+                      <use xlink:href="img/sprite.svg#icon-dribbble"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="socials__item">
+                  <a href="#" target="_blank" class="socials__link">
+                    <svg class="icon icon-medium">
+                      <use xlink:href="img/sprite.svg#icon-medium"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="socials__item">
+                  <a href="#" target="_blank" class="socials__link">
+                    <svg class="icon icon-g+">
+                      <use xlink:href="img/sprite.svg#icon-g+"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- END row -->
+      </div>
+    </footer>
+    <!-- END foooter -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- END scripts -->
+  </body>
+</html>
